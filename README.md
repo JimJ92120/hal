@@ -6,7 +6,16 @@ A `rust` bare-metal eco-system to map and interact with registers for various ch
 
 # features
 
-- `atmega328p`
+Following items can be enabled as `feature` in `Cargo.toml`.
+
+### chip
+
+- `atmega328p`: all registers are mapped
+- `bcm2837`: `GPFSEL`, `GPSET`, `GPCLR` only
+
+### boards
+
+- `arduino-uno`: minimal digital GPIO to set input / output, set output high / low
 
 ---
 
