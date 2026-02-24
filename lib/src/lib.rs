@@ -6,3 +6,4 @@
 
 pub mod globals;
 pub mod registers;
+pub mod boards;

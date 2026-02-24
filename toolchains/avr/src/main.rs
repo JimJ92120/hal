@@ -5,8 +5,7 @@
 #[cfg(target_arch = "avr")]
 
 use hal_lib::{
-    globals::{ Register, Bit },
-    registers::atmega328p::{ PORTB, DDRB },
+    boards::arduino_uno::{ Pin, GPIO }
 };
 
 mod panic;
@@ -16,26 +15,15 @@ mod helpers;
 pub extern "C" fn main() {
     const DELAY_DURATION: u32 = 1_000_000;
     // GPIO 13 / LED_BUILTIN
-    const PIN: Bit = DDRB::PB5;
-
-    unsafe {
-        // set output
-        DDRB::set(PIN.mask());
-    }
+    const PIN: Pin = Pin::Thirteen;
+    
+    GPIO::set_output(PIN);
 
     loop {
-        unsafe {
-            // set high
-            PORTB::set(PIN.mask());
-        }
-
+        GPIO::set_high(PIN);
         helpers::delay(DELAY_DURATION);
 
-        unsafe {
-            // set low
-            PORTB::set(PORTB::get() & !(PIN.mask()));
-        }
-
+        GPIO::set_low(PIN);
         helpers::delay(DELAY_DURATION);
     }
 }
