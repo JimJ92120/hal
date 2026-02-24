@@ -1,6 +1,6 @@
 # hal
 
-A `rust` bare-metal eco-system to map and interact with registers for various chips and boards.
+Some utilities to map and interact with registers for various chips and boards in `rust`.
 
 ---
 
