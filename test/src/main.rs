@@ -10,8 +10,4 @@ fn main() {
     println!("address: {:?}", Register::ADDRESS);
     println!("bit value: {:x}", Register::PB2 as u8);
     println!("bit mask: {:08b}", Register::PB2.mask());
-
-    unsafe {
-        println!("read: {}", Register::get());
-    }
 }
