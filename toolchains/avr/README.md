@@ -1,9 +1,6 @@
-# avr
+# hal-toolchains-avr
 
-Examples to use registers via Rust for Arduino Uno (`ATmega328P`).
-
-Each example will be added to a different branch.  
-`main` will contain the initial setup and environment as project's boilerplate.
+Toolchain boilerplate for `avr` with a basic LED blink example.
 
 ---
 
