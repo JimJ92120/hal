@@ -2,6 +2,18 @@ pub type Address = *mut u8;
 
 pub trait Register {
     const ADDRESS: Address;
+    
+    unsafe fn get() -> u8 {
+        unsafe {
+            core::ptr::read_volatile(Self::ADDRESS)
+        }
+    }
+
+    unsafe fn set(value: u8) {
+        unsafe {
+            core::ptr::write_volatile(Self::ADDRESS, value);
+        }
+    }
 }
 
 #[derive(Debug)]
