@@ -10,6 +10,14 @@ A `rust` bare-metal eco-system to map and interact with registers for various ch
 
 ---
 
+# toolchains
+
+See [`toolchains/README.md`](toolchains/README.md).
+
+- `avr`
+
+---
+
 # installation
 
 ### requirements
@@ -32,8 +40,13 @@ nix-shell
 # usage
 
 ```sh
-# run examples
-cargo run --manifest-path examples/Cargo.toml
+# run test
+cargo run --manifest-path test/Cargo.toml
+
+# build with toolchains
+cd toolchains/$TARGET
+nix-shell
+cargo build --release
 ```
 
 ---
