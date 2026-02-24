@@ -19,14 +19,14 @@ pub trait Register {
 #[derive(Debug)]
 #[repr(u8)]
 pub enum Bit {
-    Zero = 0,
-    One = 1,
-    Two = 2,
-    Three = 3,
-    Four = 4,
-    Five = 5,
-    Six = 6,
-    Seven = 7,
+    Zero    = 0,
+    One     = 1,
+    Two     = 2,
+    Three   = 3,
+    Four    = 4,
+    Five    = 5,
+    Six     = 6,
+    Seven   = 7,
 }
 impl Bit {
     // 1 << value
