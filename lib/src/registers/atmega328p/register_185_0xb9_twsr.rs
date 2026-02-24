@@ -9,12 +9,12 @@ impl Register for TWSR {
 }
 
 impl TWSR {
-    pub const TCR2BUB: Bit = Bit::Zero;
-    pub const TCR2AUB: Bit = Bit::One;
-    pub const OCR2BUB: Bit = Bit::Two;
-    pub const OCR2AUB: Bit = Bit::Three;
-    pub const TCN2UB: Bit = Bit::Four;
-    pub const AS2: Bit = Bit::Five;
-    pub const EXCLK: Bit = Bit::Six;
-    pub const WDIF: Bit = Bit::Seven;
+    pub const TWPS0: Bit = Bit::Zero;
+    pub const TWPS1: Bit = Bit::One;
+    // 2
+    pub const TWS3: Bit = Bit::Three;
+    pub const TWS4: Bit = Bit::Four;
+    pub const TWS5: Bit = Bit::Five;
+    pub const TWS6: Bit = Bit::Six;
+    pub const TWS7: Bit = Bit::Seven;
 }

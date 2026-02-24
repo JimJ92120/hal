@@ -6,7 +6,7 @@ use super::IO_OFFSET;
 pub struct OCR0B;
 
 impl Register for OCR0B {
-    const ADDRESS: Address = (IO_OFFSET + 0x27) as Address;
+    const ADDRESS: Address = (IO_OFFSET + 0x28) as Address;
 }
 
 impl OCR0B {
