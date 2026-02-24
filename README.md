@@ -2,6 +2,12 @@
 
 ---
 
+# features
+
+- `atmega328p`
+
+---
+
 # installation
 
 ### requirements

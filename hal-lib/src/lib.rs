@@ -1,6 +1,8 @@
 #![no_std]
 #![no_main]
 
-pub fn hello_world() -> &'static str {
-    "hello from hal-lib"
-}
+#![allow(dead_code)]
+#![allow(unused_imports)]
+
+pub mod globals;
+pub mod registers;
