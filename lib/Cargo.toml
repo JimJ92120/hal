@@ -5,3 +5,4 @@ edition = "2024"
 
 [features]
 atmega328p = []
+bcm2837 = []
