@@ -1,6 +1,6 @@
 # hal-toolchains-aarch64-none
 
-Toolchain boilerplate for `aarch64-none` (bare-metal) with a basic LED blink example.
+Toolchain boilerplate for `aarch64-none` (bare-metal) with a basic LED blink example to **GPIO 27**.
 
 Examples will target **Raspberry Pi 3B** (`BCM2837`).  
 See below to target other models.
