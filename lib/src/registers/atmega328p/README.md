@@ -1,5 +1,7 @@
 # atmega328p
 
+See all registers and bits in [`atmega328p.csv`](./atmega328p.csv).
+
 ---
 
 # references
