@@ -25,17 +25,16 @@ pub extern "C" fn main() {
 
     loop {
         unsafe {
-            // high
+            // set high
             PORTB::set(PIN.mask());
         }
 
         helpers::delay(DELAY_DURATION);
 
         unsafe {
-            // low
+            // set low
             PORTB::set(PORTB::get() & !(PIN.mask()));
         }
-
 
         helpers::delay(DELAY_DURATION);
     }
