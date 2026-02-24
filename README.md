@@ -21,9 +21,10 @@ Following items can be enabled as `feature` in `Cargo.toml`.
 
 # toolchains
 
-See [`toolchains/README.md`](toolchains/README.md).
+Following toolchains are available with a minimal example to consume `hal-lib`.
 
-- `avr`
+- [`avr`](toolchains/avr/README.md)
+- [`aarch64-none`](toolchains/aarch64-none/README.md)
 
 ---
 
