@@ -7,3 +7,4 @@ edition = "2024"
 atmega328p = []
 bcm2837 = []
 arduino-uno = ["atmega328p"]
+rpi-3 = ["bcm2837"]
