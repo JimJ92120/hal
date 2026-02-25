@@ -26,6 +26,17 @@ Following toolchains are available with a minimal example to consume `hal-lib`.
 - [`avr`](toolchains/avr/README.md)
 - [`aarch64-none`](toolchains/aarch64-none/README.md)
 
+```sh
+# build with toolchains
+$TOOLCHAIN=avr
+
+cd toolchains/$TOOLCHAIN
+
+nix-shell
+
+cargo build --release
+```
+
 ---
 
 # installation
@@ -43,20 +54,6 @@ Build dependencies and environment are setup in `shell.nix`.
 
 ```sh
 nix-shell
-```
-
----
-
-# usage
-
-```sh
-# run test
-cargo run --manifest-path test/Cargo.toml
-
-# build with toolchains
-cd toolchains/$TARGET
-nix-shell
-cargo build --release
 ```
 
 ---
