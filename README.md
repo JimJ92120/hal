@@ -27,6 +27,7 @@ Following toolchains are available with a minimal example to consume `hal-lib`.
 
 - [`avr`](toolchains/avr/README.md)
 - [`aarch64-none`](toolchains/aarch64-none/README.md)
+- [`arm-none`](toolchains/arm-none/README.md)
 
 ```sh
 # build with toolchains
