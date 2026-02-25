@@ -1,5 +1,5 @@
-// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=73
-use crate::globals::{ Register, Bit, Address };
+// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#[repr(u8)]age=73
+use crate::globals::{ Register, Address };
 use super::IO_OFFSET;
 
 #[derive(Debug)]
@@ -9,13 +9,15 @@ impl Register for PORTD {
     const ADDRESS: Address = (IO_OFFSET + 0x0B) as Address;
 }
 
-impl PORTD {
-    pub const PD0: Bit = Bit::Zero;
-    pub const PD1: Bit = Bit::One;
-    pub const PD2: Bit = Bit::Two;
-    pub const PD3: Bit = Bit::Three;
-    pub const PD4: Bit = Bit::Four;
-    pub const PD5: Bit = Bit::Five;
-    pub const PD6: Bit = Bit::Six;
-    pub const PD7: Bit = Bit::Seven;
+#[derive(Debug)]
+#[repr(u8)]
+pub enum PORTDBitField {
+    PD0 = 0,
+    PD1 = 1,
+    PD2 = 2,
+    PD3 = 3,
+    PD4 = 4,
+    PD5 = 5,
+    PD6 = 6,
+    PD7 = 7,
 }

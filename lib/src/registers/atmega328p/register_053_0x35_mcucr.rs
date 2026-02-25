@@ -1,7 +1,7 @@
-// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=38
-// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=52
-// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72
-use crate::globals::{ Register, Bit, Address };
+// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#[repr(u8)]age=38
+// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#[repr(u8)]age=52
+// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#[repr(u8)]age=72
+use crate::globals::{ Register, Address };
 use super::IO_OFFSET;
 
 #[derive(Debug)]
@@ -11,13 +11,15 @@ impl Register for MCUCR {
     const ADDRESS: Address = (IO_OFFSET + 0x35) as Address;
 }
 
-impl MCUCR {
-    pub const IVCE: Bit = Bit::Zero;
-    pub const IVSEL: Bit = Bit::One;
+#[derive(Debug)]
+#[repr(u8)]
+pub enum MCUCRBitField {
+    IVCE = 0,
+    IVSEL = 1,
     // 2
     // 3
-    pub const PUD: Bit = Bit::Four;
-    pub const BODSE: Bit = Bit::Five;
-    pub const BODS: Bit = Bit::Six;
+    PUD = 4,
+    BODSE = 5,
+    BODS = 6,
     // 7
 }

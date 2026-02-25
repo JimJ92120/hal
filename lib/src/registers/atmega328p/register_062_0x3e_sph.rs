@@ -1,5 +1,5 @@
-// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=13
-use crate::globals::{ Register, Bit, Address };
+// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#[repr(u8)]age=13
+use crate::globals::{ Register, Address };
 use super::IO_OFFSET;
 
 #[derive(Debug)]
@@ -9,10 +9,12 @@ impl Register for SPH {
     const ADDRESS: Address = (IO_OFFSET + 0x3E) as Address;
 }
 
-impl SPH {
-    pub const SP8: Bit = Bit::Zero;
-    pub const SP9: Bit = Bit::One;
-    pub const SP10: Bit = Bit::Two;
+#[derive(Debug)]
+#[repr(u8)]
+pub enum SPHBitField {
+    SP8 = 0,
+    SP9 = 1,
+    SP10 = 2,
     // 3
     // 4
     // 5

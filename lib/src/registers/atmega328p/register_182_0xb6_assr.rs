@@ -1,5 +1,5 @@
-// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=133
-use crate::globals::{ Register, Bit, Address };
+// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#[repr(u8)]age=133
+use crate::globals::{ Register, Address };
 
 #[derive(Debug)]
 pub struct ASSR;
@@ -8,13 +8,15 @@ impl Register for ASSR {
     const ADDRESS: Address = 0xB6 as Address;
 }
 
-impl ASSR {
-    pub const TCR2BUB: Bit = Bit::Zero;
-    pub const TCR2AUB: Bit = Bit::One;
-    pub const OCR2BUB: Bit = Bit::Two;
-    pub const OCR2AUB: Bit = Bit::Three;
-    pub const TCN2UB: Bit = Bit::Four;
-    pub const AS2: Bit = Bit::Five;
-    pub const EXCLK: Bit = Bit::Six;
+#[derive(Debug)]
+#[repr(u8)]
+pub enum ASSRBitField {
+    TCR2BUB = 0,
+    TCR2AUB = 1,
+    OCR2BUB = 2,
+    OCR2AUB = 3,
+    TCN2UB = 4,
+    AS2 = 5,
+    EXCLK = 6,
     // 7
 }

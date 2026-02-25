@@ -1,5 +1,5 @@
 // https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf
-use crate::globals::{ Register, Bit, Address };
+use crate::globals::{ Register, Address };
 use super::IO_OFFSET;
 
 #[derive(Debug)]
@@ -9,13 +9,15 @@ impl Register for TCCR0B {
     const ADDRESS: Address = (IO_OFFSET + 0x25) as Address;
 }
 
-impl TCCR0B {
-    pub const CS00: Bit = Bit::Zero;
-    pub const CS01: Bit = Bit::One;
-    pub const CS02: Bit = Bit::Two;
-    pub const WGM02: Bit = Bit::Three;
+#[derive(Debug)]
+#[repr(u8)]
+pub enum TCCR0BBitField {
+    CS00 = 0,
+    CS01 = 1,
+    CS02 = 2,
+    WGM02 = 3,
     // 4
     // 5
-    pub const FOC0B: Bit = Bit::Six;
-    pub const FOC0A: Bit = Bit::Seven;
+    FOC0B = 6,
+    FOC0A = 7,
 }

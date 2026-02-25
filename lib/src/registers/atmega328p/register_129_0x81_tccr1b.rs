@@ -1,5 +1,5 @@
-// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=110
-use crate::globals::{ Register, Bit, Address };
+// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#[repr(u8)]age=110
+use crate::globals::{ Register, Address };
 
 #[derive(Debug)]
 pub struct TCCR1B;
@@ -8,13 +8,15 @@ impl Register for TCCR1B {
     const ADDRESS: Address = 0x81 as Address;
 }
 
-impl TCCR1B {
-    pub const CS10: Bit = Bit::Zero;
-    pub const CS11: Bit = Bit::One;
-    pub const CS12: Bit = Bit::Two;
-    pub const WGM12: Bit = Bit::Three;
-    pub const WGM13: Bit = Bit::Four;
+#[derive(Debug)]
+#[repr(u8)]
+pub enum TCCR1BBitField {
+    CS10 = 0,
+    CS11 = 1,
+    CS12 = 2,
+    WGM12 = 3,
+    WGM13 = 4,
     // 5
-    pub const ICES1: Bit = Bit::Six;
-    pub const ICNC1: Bit = Bit::Seven;
+    ICES1 = 6,
+    ICNC1 = 7,
 }

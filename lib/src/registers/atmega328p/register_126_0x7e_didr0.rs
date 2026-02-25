@@ -1,5 +1,5 @@
-// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=220
-use crate::globals::{ Register, Bit, Address };
+// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#[repr(u8)]age=220
+use crate::globals::{ Register, Address };
 
 #[derive(Debug)]
 pub struct DIDR0;
@@ -8,13 +8,15 @@ impl Register for DIDR0 {
     const ADDRESS: Address = 0x7E as Address;
 }
 
-impl DIDR0 {
-    pub const ADC0D: Bit = Bit::Zero;
-    pub const ADC1D: Bit = Bit::One;
-    pub const ADC2D: Bit = Bit::Two;
-    pub const ADC3D: Bit = Bit::Three;
-    pub const ADC4D: Bit = Bit::Four;
-    pub const ADC5D: Bit = Bit::Five;
+#[derive(Debug)]
+#[repr(u8)]
+pub enum DIDR0BitField {
+    ADC0D = 0,
+    ADC1D = 1,
+    ADC2D = 2,
+    ADC3D = 3,
+    ADC4D = 4,
+    ADC5D = 5,
     // 6
     // 7
 }

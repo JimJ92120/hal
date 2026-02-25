@@ -1,5 +1,5 @@
-// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=217
-use crate::globals::{ Register, Bit, Address };
+// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#[repr(u8)]age=217
+use crate::globals::{ Register, Address };
 
 #[derive(Debug)]
 pub struct ADMUX;
@@ -8,13 +8,15 @@ impl Register for ADMUX {
     const ADDRESS: Address = 0x7C as Address;
 }
 
-impl ADMUX {
-    pub const MUX0: Bit = Bit::Zero;
-    pub const MUX1: Bit = Bit::One;
-    pub const MUX2: Bit = Bit::Two;
-    pub const MUX3: Bit = Bit::Three;
+#[derive(Debug)]
+#[repr(u8)]
+pub enum ADMUXBitField {
+    MUX0 = 0,
+    MUX1 = 1,
+    MUX2 = 2,
+    MUX3 = 3,
     // 4
-    pub const ADLAR: Bit = Bit::Five;
-    pub const REFS0: Bit = Bit::Six;
-    pub const REFS1: Bit = Bit::Seven;
+    ADLAR = 5,
+    REFS0 = 6,
+    REFS1 = 7,
 }

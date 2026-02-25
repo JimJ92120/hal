@@ -1,5 +1,5 @@
-// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=36
-use crate::globals::{ Register, Bit, Address };
+// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#[repr(u8)]age=36
+use crate::globals::{ Register, Address };
 
 #[derive(Debug)]
 pub struct PRR;
@@ -8,13 +8,15 @@ impl Register for PRR {
     const ADDRESS: Address = 0x64 as Address;
 }
 
-impl PRR {
-    pub const PRADC: Bit = Bit::Zero;
-    pub const PRUSAR0: Bit = Bit::One;
-    pub const PRSPI: Bit = Bit::Two;
-    pub const PRTIM1: Bit = Bit::Three;
+#[derive(Debug)]
+#[repr(u8)]
+pub enum PRRBitField {
+    PRADC = 0,
+    PRUSAR0 = 1,
+    PRSPI = 2,
+    PRTIM1 = 3,
     // 4
-    pub const PRTIM0: Bit = Bit::Five;
-    pub const PRTIM2: Bit = Bit::Six;
-    pub const PRTWI: Bit = Bit::Seven;
+    PRTIM0 = 5,
+    PRTIM2 = 6,
+    PRTWI = 7,
 }
