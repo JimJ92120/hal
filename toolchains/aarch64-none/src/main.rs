@@ -3,7 +3,11 @@
 
 use hal_lib::{
     globals::{ Register },
-    registers::bcm2837::{ GPFSEL2, GPSET0, GPCLR0 },
+    registers::bcm2837::{
+        GPFSEL2, GPFSEL2BitField,
+        GPSET0, GPSET0BitField,
+        GPCLR0, GPCLR0BitField
+    },
 };
 
 mod panic;
@@ -14,23 +18,17 @@ mod helpers;
 pub extern "C" fn main() -> ! {
     const DELAY_DURATION: u32 = 3_000_000;
     
-    unsafe {
-        // set GPIO 27 as output
-        GPFSEL2::set(GPFSEL2::FSEL7.mask());
-    }
+    // set GPIO 27 as output
+    GPFSEL2::set_bit_mask(GPFSEL2BitField::FSEL7 as u32);
 
     loop {
-        unsafe {
-            // set high
-            GPSET0::set(GPSET0::PIN_27.mask());
-        }
+        // set high
+        GPSET0::set_bit_mask(GPSET0BitField::PIN27 as u32);
 
         helpers::delay(DELAY_DURATION);
 
-        unsafe {
-            // set low
-            GPCLR0::set(GPCLR0::PIN_27.mask());
-        }
+        // set low
+        GPCLR0::set_bit_mask(GPCLR0BitField::PIN27 as u32);
 
         helpers::delay(DELAY_DURATION);
     }

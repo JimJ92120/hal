@@ -1,5 +1,5 @@
 // https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72
-use crate::globals::{ Register, Bit, Address };
+use crate::globals::{ Register, Address };
 use super::MMIO_BASE_OFFSET;
 
 #[derive(Debug)]
@@ -10,37 +10,39 @@ impl Register for GPCLR0 {
 }
 
 // GPIO 0-31
-impl GPCLR0 {
-    pub const PIN_00: Bit = Bit::Zero;
-    pub const PIN_01: Bit = Bit::One;
-    pub const PIN_02: Bit = Bit::Two;
-    pub const PIN_03: Bit = Bit::Three;
-    pub const PIN_04: Bit = Bit::Four;
-    pub const PIN_05: Bit = Bit::Five;
-    pub const PIN_06: Bit = Bit::Six;
-    pub const PIN_07: Bit = Bit::Seven;
-    pub const PIN_08: Bit = Bit::Eight;
-    pub const PIN_09: Bit = Bit::Nine;
-    pub const PIN_10: Bit = Bit::Ten;
-    pub const PIN_11: Bit = Bit::Eleven;
-    pub const PIN_12: Bit = Bit::Twelve;
-    pub const PIN_13: Bit = Bit::Thirteen;
-    pub const PIN_14: Bit = Bit::Fourteen;
-    pub const PIN_15: Bit = Bit::Fifteen;
-    pub const PIN_16: Bit = Bit::Sixteen;
-    pub const PIN_17: Bit = Bit::Seventeen;
-    pub const PIN_18: Bit = Bit::Eighteen;
-    pub const PIN_19: Bit = Bit::Nineteen;
-    pub const PIN_20: Bit = Bit::Twenty;
-    pub const PIN_21: Bit = Bit::TwentyOne;
-    pub const PIN_22: Bit = Bit::TwentyTwo;
-    pub const PIN_23: Bit = Bit::TwentyThree;
-    pub const PIN_24: Bit = Bit::TwentyFour;
-    pub const PIN_25: Bit = Bit::TwentyFive;
-    pub const PIN_26: Bit = Bit::TwentySix;
-    pub const PIN_27: Bit = Bit::TwentySeven;
-    pub const PIN_28: Bit = Bit::TwentyEight;
-    pub const PIN_29: Bit = Bit::TwentyNine;
-    pub const PIN_30: Bit = Bit::Thirty;
-    pub const PIN_31: Bit = Bit::ThirtyOne;
+#[derive(Debug)]
+#[repr(u32)]
+pub enum GPCLR0BitField {
+    PIN00 = 0,
+    PIN01 = 1,
+    PIN02 = 2,
+    PIN03 = 3,
+    PIN04 = 4,
+    PIN05 = 5,
+    PIN06 = 6,
+    PIN07 = 7,
+    PIN08 = 8,
+    PIN09 = 9,
+    PIN10 = 10,
+    PIN11 = 11,
+    PIN12 = 12,
+    PIN13 = 13,
+    PIN14 = 14,
+    PIN15 = 15,
+    PIN16 = 16,
+    PIN17 = 17,
+    PIN18 = 18,
+    PIN19 = 19,
+    PIN20 = 20,
+    PIN21 = 21,
+    PIN22 = 22,
+    PIN23 = 23,
+    PIN24 = 24,
+    PIN25 = 25,
+    PIN26 = 26,
+    PIN27 = 27,
+    PIN28 = 28,
+    PIN29 = 29,
+    PIN30 = 30,
+    PIN31 = 31,
 }

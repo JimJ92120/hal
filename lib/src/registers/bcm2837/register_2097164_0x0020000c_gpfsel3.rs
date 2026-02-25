@@ -1,5 +1,5 @@
 // https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72
-use crate::globals::{ Register, Bit, Address };
+use crate::globals::{ Register, Address };
 use super::MMIO_BASE_OFFSET;
 
 #[derive(Debug)]
@@ -10,35 +10,37 @@ impl Register for GPFSEL3 {
 }
 
 // GPIO 30-39
-impl GPFSEL3 {
-    pub const FSEL0: Bit = Bit::Zero;
+#[derive(Debug)]
+#[repr(u32)]
+pub enum GPFSEL3BitField {
+    FSEL0 = 0,
     // 1 (FSEL0)
     // 2 (FSEL0)
-    pub const FSEL1: Bit = Bit::Three;
+    FSEL1 = 3,
     // 4 (FSEL1)
     // 5 (FSEL1)
-    pub const FSEL2: Bit = Bit::Six;
+    FSEL2 = 6,
     // 7 (FSEL2)
     // 8 (FSEL2)
-    pub const FSEL3: Bit = Bit::Nine;
+    FSEL3 = 9,
     // 10 (FSEL3)
     // 11 (FSEL3)
-    pub const FSEL4: Bit = Bit::Twelve;
+    FSEL4 = 12,
     // 13 (FSEL4)
     // 14 (FSEL4)
-    pub const FSEL5: Bit = Bit::Fifteen;
+    FSEL5 = 15,
     // 16 (FSEL5)
     // 17 (FSEL5)
-    pub const FSEL6: Bit = Bit::Eighteen;
+    FSEL6 = 18,
     // 19 (FSEL6)
     // 20 (FSEL7)
-    pub const FSEL7: Bit = Bit::TwentyOne;
+    FSEL7 = 21,
     // 22 (FSEL7)
     // 23 (FSEL7)
-    pub const FSEL8: Bit = Bit::TwentyFour;
+    FSEL8 = 24,
     // 25 (FSEL8)
     // 26 (FSEL8)
-    pub const FSEL9: Bit = Bit::TwentySeven;
+    FSEL9 = 27,
     // 28 (FSEL9)
     // 29 (FSEL9)
     // 30
