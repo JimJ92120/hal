@@ -2,7 +2,7 @@
 
 Toolchain boilerplate for `arm-none` (bare-metal) with a basic LED blink example to **GPIO 27**.
 
-Examples will target **Raspberry Pi 3B** (`BCM2837`).  
+Examples will target **Raspberry Pi 2B v1.1** (`BCM2836`).  
 See below to target other models.
 
 ---
@@ -50,9 +50,6 @@ qemu-system-arm -M raspi2b -kernel build/kernel7.img -serial null -serial stdio 
 ```
 
 ### qemu
-
-`raspi2b` is targeted in the example, as no Pi 3 models is available for `qemu-system-arm`.  
-`BCM2836` (Pi 2B) and `BCM2837` (Pi 3) do share same base and registers for most part (possibly `MMIO_BASE` to udpate).
 
 `qemu-system-arm` have a limited set of available machine for Raspberry Pi's models.  
 Run `qemu-system-arm -M help | grep raspi` to see supported models.

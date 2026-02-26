@@ -2,7 +2,7 @@
 #![no_main]
 
 use hal_lib::{
-    boards::rpi_3::{ Pin, GPIO }
+    boards::rpi::{ Pin, GPIO }
 };
 
 mod panic;
