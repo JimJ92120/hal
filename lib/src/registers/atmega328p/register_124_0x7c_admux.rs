@@ -1,11 +1,11 @@
 // https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#[repr(u8)]age=217
-use crate::globals::{ Register, Address };
+use crate::globals::Register;
 
 #[derive(Debug)]
 pub struct ADMUX;
 
-impl Register for ADMUX {
-    const ADDRESS: Address = 0x7C as Address;
+impl Register<u8> for ADMUX {
+    const ADDRESS: *mut u8 = 0x7C as *mut u8;
 }
 
 #[derive(Debug)]

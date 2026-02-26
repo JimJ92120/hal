@@ -1,11 +1,11 @@
 // https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf
-use crate::globals::{ Register, Address };
+use crate::globals::Register;
 
 #[derive(Debug)]
 pub struct PCICR;
 
-impl Register for PCICR {
-    const ADDRESS: Address = 0x68 as Address;
+impl Register<u8> for PCICR {
+    const ADDRESS: *mut u8 = 0x68 as *mut u8;
 }
 
 #[derive(Debug)]

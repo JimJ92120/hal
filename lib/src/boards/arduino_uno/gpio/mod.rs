@@ -20,11 +20,14 @@ impl GPIO {
 
         match pin {
             Pin::Zero | Pin::One | Pin::Two | Pin::Three | Pin::Four | Pin::Five | Pin::Six | Pin::Seven
-                => DDRD::set_bit_mask(bit),
+                // => DDRD::set_bit_mask(bit),
+                => DDRD::or(1 << bit),
             Pin::Eight | Pin::Nine | Pin::Ten | Pin::Eleven | Pin::Twelve | Pin::Thirteen
-                => DDRB::set_bit_mask(bit),
+                // => DDRB::set_bit_mask(bit),
+                => DDRB::or(1 << bit),
             Pin::Fourteen | Pin::Fifteen | Pin::Sixteen | Pin::Seventeen | Pin::Eighteen | Pin::Nineteen
-                => DDRC::set_bit_mask(bit),
+                // => DDRC::set_bit_mask(bit),
+                => DDRC::or(1 << bit),
         };
     }
 
@@ -33,11 +36,14 @@ impl GPIO {
 
         match pin {
             Pin::Zero | Pin::One | Pin::Two | Pin::Three | Pin::Four | Pin::Five | Pin::Six | Pin::Seven
-                => DDRD::unset_bit_mask(bit),
+                // => DDRD::set_bit_mask(bit),
+                => DDRD::and(!(1 << bit)),
             Pin::Eight | Pin::Nine | Pin::Ten | Pin::Eleven | Pin::Twelve | Pin::Thirteen
-                => DDRB::unset_bit_mask(bit),
+                // => DDRB::set_bit_mask(bit),
+                => DDRB::and(!(1 << bit)),
             Pin::Fourteen | Pin::Fifteen | Pin::Sixteen | Pin::Seventeen | Pin::Eighteen | Pin::Nineteen
-                => DDRC::unset_bit_mask(bit),
+                // => DDRC::set_bit_mask(bit),
+                => DDRC::and(!(1 << bit)),
         };
     }
 
@@ -46,11 +52,11 @@ impl GPIO {
 
         match pin {
             Pin::Zero | Pin::One | Pin::Two | Pin::Three | Pin::Four | Pin::Five | Pin::Six | Pin::Seven
-                => PORTD::set_bit_mask(bit),
+                => PORTD::or(1 << bit),
             Pin::Eight | Pin::Nine | Pin::Ten | Pin::Eleven | Pin::Twelve | Pin::Thirteen
-                => PORTB::set_bit_mask(bit),
+                => PORTB::or(1 << bit),
             Pin::Fourteen | Pin::Fifteen | Pin::Sixteen | Pin::Seventeen | Pin::Eighteen | Pin::Nineteen
-                => PORTC::set_bit_mask(bit),
+                => PORTC::or(1 << bit),
         };
     }
 
@@ -59,11 +65,11 @@ impl GPIO {
 
         match pin {
             Pin::Zero | Pin::One | Pin::Two | Pin::Three | Pin::Four | Pin::Five | Pin::Six | Pin::Seven
-                => PORTD::unset_bit_mask(bit),
+                => PORTD::and(!(1 << bit)),
             Pin::Eight | Pin::Nine | Pin::Ten | Pin::Eleven | Pin::Twelve | Pin::Thirteen
-                => PORTB::unset_bit_mask(bit),
+                => PORTB::and(!(1 << bit)),
             Pin::Fourteen | Pin::Fifteen | Pin::Sixteen | Pin::Seventeen | Pin::Eighteen | Pin::Nineteen
-                => PORTC::unset_bit_mask(bit),
+                => PORTC::and(!(1 << bit)),
         };
     }
     

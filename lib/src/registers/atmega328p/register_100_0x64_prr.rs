@@ -1,11 +1,11 @@
 // https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#[repr(u8)]age=36
-use crate::globals::{ Register, Address };
+use crate::globals::Register;
 
 #[derive(Debug)]
 pub struct PRR;
 
-impl Register for PRR {
-    const ADDRESS: Address = 0x64 as Address;
+impl Register<u8> for PRR {
+    const ADDRESS: *mut u8 = 0x64 as *mut u8;
 }
 
 #[derive(Debug)]

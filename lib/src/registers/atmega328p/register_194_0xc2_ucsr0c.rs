@@ -1,12 +1,12 @@
 // https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#[repr(u8)]age=161
 // https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#[repr(u8)]age=172
-use crate::globals::{ Register, Address };
+use crate::globals::Register;
 
 #[derive(Debug)]
 pub struct UCSR0C;
 
-impl Register for UCSR0C {
-    const ADDRESS: Address = 0xC2 as Address;
+impl Register<u8> for UCSR0C {
+    const ADDRESS: *mut u8 = 0xC2 as *mut u8;
 }
 
 #[derive(Debug)]

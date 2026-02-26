@@ -1,8 +1,4 @@
-mod register_8_bits;
-mod register_32_bits;
+mod register;
 
-#[cfg(feature = "atmega328p")]
-pub use register_8_bits::{ Address, Register };
+pub use register::Register;
 
-#[cfg(feature = "bcm2837")]
-pub use register_32_bits::{ Address, Register };

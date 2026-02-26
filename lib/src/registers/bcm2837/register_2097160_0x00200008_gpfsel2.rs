@@ -1,12 +1,12 @@
 // https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72
-use crate::globals::{ Register, Address };
+use crate::globals::Register;
 use super::MMIO_BASE_OFFSET;
 
 #[derive(Debug)]
 pub struct GPFSEL2;
 
-impl Register for GPFSEL2 {
-    const ADDRESS: Address = (MMIO_BASE_OFFSET + 0x00200008) as Address;
+impl Register<u32> for GPFSEL2 {
+    const ADDRESS: *mut u32 = (MMIO_BASE_OFFSET + 0x00200008) as *mut u32;
 }
 
 // GPIO 20-29

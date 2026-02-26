@@ -1,11 +1,11 @@
 // https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#[repr(u8)]age=200
-use crate::globals::{ Register, Address };
+use crate::globals::Register;
 
 #[derive(Debug)]
 pub struct TWSR;
 
-impl Register for TWSR {
-    const ADDRESS: Address = 0xB9 as Address;
+impl Register<u8> for TWSR {
+    const ADDRESS: *mut u8 = 0xB9 as *mut u8;
 }
 
 #[derive(Debug)]

@@ -24,13 +24,13 @@ impl GPIO {
             Pin::Zero | Pin::One
                 => panic!("Special pins not implemented."),
             Pin::Two | Pin::Three | Pin::Four | Pin::Five | Pin::Six | Pin::Seven | Pin::Eight | Pin::Nine
-                => GPFSEL0::set_bit_mask(bit),
+                => GPFSEL0::or(1 << bit),
             Pin::Ten | Pin::Eleven | Pin::Twelve | Pin::Thirteen | Pin::Fourteen | Pin::Fifteen | Pin::Sixteen
             | Pin::Seventeen | Pin::Eighteen | Pin::Nineteen
-                => GPFSEL1::set_bit_mask(bit),
+                => GPFSEL1::or(1 << bit),
             Pin::Twenty | Pin::TwentyOne | Pin::TwentyTwo | Pin::TwentyThree | Pin::TwentyFour | Pin::TwentyFive
             | Pin::TwentySix | Pin::TwentySeven
-                => GPFSEL2::set_bit_mask(bit),
+                => GPFSEL2::or(1 << bit),
         }
     }
 
@@ -41,26 +41,26 @@ impl GPIO {
             Pin::Zero | Pin::One
                 => panic!("Special pins not implemented."),
             Pin::Two | Pin::Three | Pin::Four | Pin::Five | Pin::Six | Pin::Seven | Pin::Eight | Pin::Nine
-                => GPFSEL0::unset_bit_mask(bit),
+                => GPFSEL0::and(!(1 << bit)),
             Pin::Ten | Pin::Eleven | Pin::Twelve | Pin::Thirteen | Pin::Fourteen | Pin::Fifteen | Pin::Sixteen
             | Pin::Seventeen | Pin::Eighteen | Pin::Nineteen
-                => GPFSEL1::unset_bit_mask(bit),
+                => GPFSEL1::and(!(1 << bit)),
             Pin::Twenty | Pin::TwentyOne | Pin::TwentyTwo | Pin::TwentyThree | Pin::TwentyFour | Pin::TwentyFive
             | Pin::TwentySix | Pin::TwentySeven
-                => GPFSEL2::unset_bit_mask(bit),
+                => GPFSEL2::and(!(1 << bit)),
         };
     }
 
     pub fn set_high(pin: Pin) {
         let bit = Self::get_set_bit_field(&pin);
 
-        GPSET0::set_bit_mask(bit);
+        GPSET0::or(1 << bit);
     }
 
     pub fn set_low(pin: Pin) {
         let bit = Self::get_clear_bit_field(&pin);
 
-        GPCLR0::set_bit_mask(bit);
+        GPCLR0::or(1 << bit);
     }
 
     fn get_fsel_bit_field(pin: &Pin) -> u32 {
