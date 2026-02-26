@@ -1,9 +1,9 @@
 use crate::{
     globals::{ Register },
     registers::atmega328p::{
-        DDRB, DDRBBitField, PORTB, PORTBBitField,
-        DDRC, DDRCBitField, PORTC, PORTCBitField,
-        DDRD, DDRDBitField, PORTD, PORTDBitField
+        DDRB, DDRBBitField, PORTB, PORTBBitField, PINB, PINBBitField,
+        DDRC, DDRCBitField, PORTC, PORTCBitField, PINC, PINCBitField,
+        DDRD, DDRDBitField, PORTD, PORTDBitField, PIND, PINDBitField
     }
 };
 
@@ -16,7 +16,7 @@ pub struct GPIO;
 
 impl GPIO {
     pub fn set_output(pin: Pin) {
-        let bit = Self::get_ddr_bit_field(&pin);
+        let bit = Self::get_ddr_register_bit_field(&pin);
 
         match pin {
             Pin::Zero | Pin::One | Pin::Two | Pin::Three | Pin::Four | Pin::Five | Pin::Six | Pin::Seven
@@ -32,7 +32,7 @@ impl GPIO {
     }
 
     pub fn set_input(pin: Pin) {
-        let bit = Self::get_ddr_bit_field(&pin);
+        let bit = Self::get_ddr_register_bit_field(&pin);
 
         match pin {
             Pin::Zero | Pin::One | Pin::Two | Pin::Three | Pin::Four | Pin::Five | Pin::Six | Pin::Seven
@@ -48,7 +48,7 @@ impl GPIO {
     }
 
     pub fn set_high(pin: Pin) {
-        let bit = Self::get_port_bit_field(&pin);
+        let bit = Self::get_port_register_bit_field(&pin);
 
         match pin {
             Pin::Zero | Pin::One | Pin::Two | Pin::Three | Pin::Four | Pin::Five | Pin::Six | Pin::Seven
@@ -60,8 +60,25 @@ impl GPIO {
         };
     }
 
+    // a delay after updating PORTx registers to read PINx registers
+    // it may take 1-2 clock cycles to properly update state
+    pub fn read_state(pin: Pin) -> bool {
+        let bit = Self::get_pin_register_bit_field(&pin);
+
+        let state = match pin {
+            Pin::Zero | Pin::One | Pin::Two | Pin::Three | Pin::Four | Pin::Five | Pin::Six | Pin::Seven
+                => PIND::get() & (1 << bit),
+            Pin::Eight | Pin::Nine | Pin::Ten | Pin::Eleven | Pin::Twelve | Pin::Thirteen
+                => PINB::get() & (1 << bit),
+            Pin::Fourteen | Pin::Fifteen | Pin::Sixteen | Pin::Seventeen | Pin::Eighteen | Pin::Nineteen
+                => PINC::get() & (1 << bit),
+        };
+
+        0 != state
+    }
+
     pub fn set_low(pin: Pin) {
-        let bit = Self::get_port_bit_field(&pin);
+        let bit = Self::get_port_register_bit_field(&pin);
 
         match pin {
             Pin::Zero | Pin::One | Pin::Two | Pin::Three | Pin::Four | Pin::Five | Pin::Six | Pin::Seven
@@ -73,7 +90,7 @@ impl GPIO {
         };
     }
     
-    fn get_ddr_bit_field(pin: &Pin) -> u8 {
+    fn get_ddr_register_bit_field(pin: &Pin) -> u8 {
         match pin {
             Pin::Zero       => DDRDBitField::PD0 as u8,
             Pin::One        => DDRDBitField::PD1 as u8,
@@ -98,7 +115,7 @@ impl GPIO {
         }
     }
 
-    fn get_port_bit_field(pin: &Pin) -> u8 {
+    fn get_port_register_bit_field(pin: &Pin) -> u8 {
         match pin {
             Pin::Zero       => PORTDBitField::PD0 as u8,
             Pin::One        => PORTDBitField::PD1 as u8,
@@ -120,6 +137,31 @@ impl GPIO {
             Pin::Seventeen  => PORTCBitField::AC3 as u8,
             Pin::Eighteen   => PORTCBitField::AC4 as u8,
             Pin::Nineteen   => PORTCBitField::AC5 as u8,
+        }
+    }
+
+    fn get_pin_register_bit_field(pin: &Pin) -> u8 {
+        match pin {
+            Pin::Zero       => PINDBitField::PD0 as u8,
+            Pin::One        => PINDBitField::PD1 as u8,
+            Pin::Two        => PINDBitField::PD2 as u8,
+            Pin::Three      => PINDBitField::PD3 as u8,
+            Pin::Four       => PINDBitField::PD4 as u8,
+            Pin::Five       => PINDBitField::PD5 as u8,
+            Pin::Six        => PINDBitField::PD6 as u8,
+            Pin::Seven      => PINDBitField::PD7 as u8,
+            Pin::Eight      => PINBBitField::PB0 as u8,
+            Pin::Nine       => PINBBitField::PB1 as u8,
+            Pin::Ten        => PINBBitField::PB2 as u8,
+            Pin::Eleven     => PINBBitField::PB3 as u8,
+            Pin::Twelve     => PINBBitField::PB4 as u8,
+            Pin::Thirteen   => PINBBitField::PB5 as u8,
+            Pin::Fourteen   => PINCBitField::AC0 as u8,
+            Pin::Fifteen    => PINCBitField::AC1 as u8,
+            Pin::Sixteen    => PINCBitField::AC2 as u8,
+            Pin::Seventeen  => PINCBitField::AC3 as u8,
+            Pin::Eighteen   => PINCBitField::AC4 as u8,
+            Pin::Nineteen   => PINCBitField::AC5 as u8,
         }
     }
 }
