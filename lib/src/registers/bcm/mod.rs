@@ -1,4 +1,16 @@
-pub const MMIO_BASE_OFFSET: u32 = 0x3F000000;
+pub const MMIO_BASE: u32 = if cfg!(feature = "bcm2835") {
+    0x20204000
+} else if cfg!(feature = "bcm2836")
+    || cfg!(feature = "bcm2837")
+    || cfg!(feature = "rp3a0")
+    || cfg!(feature = "bcm2837b0")
+{
+    0x3F000000
+} else if cfg!(feature = "bcm2711") {
+    0x7E000000
+} else {
+    panic!("No MMIO_BASE defined");
+};
 
 // https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf#page=8
 

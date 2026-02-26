@@ -1,6 +1,6 @@
 use crate::{
     globals::{ Register },
-    registers::bcm2837::{
+    registers::bcm::{
         GPFSEL0, GPFSEL0BitField,
         GPFSEL1, GPFSEL1BitField,
         GPFSEL2, GPFSEL2BitField,

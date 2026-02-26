@@ -1,18 +1,18 @@
 // https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72
 use crate::globals::Register;
-use super::MMIO_BASE_OFFSET;
+use super::MMIO_BASE;
 
 #[derive(Debug)]
-pub struct GPCLR1;
+pub struct GPSET1;
 
-impl Register<u32> for GPCLR1 {
-    const ADDRESS: *mut u32 = (MMIO_BASE_OFFSET + 0x0020002C) as *mut u32;
+impl Register<u32> for GPSET1 {
+    const ADDRESS: *mut u32 = (MMIO_BASE + 0x00200020) as *mut u32;
 }
 
 // GPIO 32-53
 #[derive(Debug)]
 #[repr(u32)]
-pub enum GPCLR1BitField {
+pub enum GPSET1BitField {
     PIN32 = 0,
     PIN33 = 1,
     PIN34 = 2,

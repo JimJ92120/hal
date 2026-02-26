@@ -1,12 +1,12 @@
 // https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72
 use crate::globals::Register;
-use super::MMIO_BASE_OFFSET;
+use super::MMIO_BASE;
 
 #[derive(Debug)]
 pub struct GPSET0;
 
 impl Register<u32> for GPSET0 {
-    const ADDRESS: *mut u32 = (MMIO_BASE_OFFSET + 0x0020001C) as *mut u32;
+    const ADDRESS: *mut u32 = (MMIO_BASE + 0x0020001C) as *mut u32;
 }
 
 // GPIO 0-31

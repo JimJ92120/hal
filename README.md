@@ -6,18 +6,18 @@ Some utilities to map and interact with registers for various chips and boards i
 
 # features
 
-Following items can be enabled as `feature` in `Cargo.toml`.  
+Following items can be enabled as `[features]` defined in `Cargo.toml`.  
 See [`lib/Cargo.toml`](lib/Cargo.toml) for all defined features and dependencies tree.
 
-### chip
+### registers
 
 - `atmega328p`: all registers are mapped
-- `bcm2837`: `GPFSEL`, `GPSET`, `GPCLR` only
+- `bcm*`: `GPFSEL`, `GPSET`, `GPCLR` only (see [`lib/src/registers/bcm/README.md`](lib/src/registers/bcm/README.md))
 
 ### boards
 
 - `arduino-uno`: minimal digital GPIO to set input / output, set output high / low
-- `rpi-3`: minimal digital GPIO to set input / output, set output high / low
+- `rpi-*`: minimal digital GPIO to set input / output, set output high / low (see [`lib/src/boards/rpi/README.md`](lib/src/boards/rpi/README.md))
 
 ---
 
