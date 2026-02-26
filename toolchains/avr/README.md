@@ -1,6 +1,18 @@
 # hal-toolchains-avr
 
-Toolchain boilerplate for `avr` with a basic LED blink example.
+Toolchain boilerplate for `avr` with a basic examples.
+
+---
+
+# examples
+
+Examples are located in `src/examples` directory.  
+Each example can be loaded in `src/main.rs` with `examples::<example-name>::run()`.
+
+- `led_blink`: toggle a LED (**GPIO 13**) on / off
+- `buttton_toggle`: set a LED (**GPIO 13**) on / off if a button (**GPIO 7**) is pressed
+- `uart_send`: send `hello world` via UART`
+- `uart_read`: receive single byte and send back `received: {byte}` message via UART
 
 ---
 
