@@ -7,12 +7,13 @@
 
 mod panic;
 mod helpers;
+
 mod examples;
 
 #[unsafe(no_mangle)]
 pub extern "C" fn main() {
-    // examples::led_blink::run();
+    examples::led_blink::run();
     // examples::button_toggle::run();
     // examples::uart_send::run();
-    examples::uart_read::run();
+    // examples::uart_read::run();
 }
