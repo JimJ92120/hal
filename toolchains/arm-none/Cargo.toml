@@ -1,10 +1,10 @@
 [package]
-name = "hal-toolchains-arm-none"
+name = "toolchains-arm-none"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-hal-lib = { path = "../../lib", features = ["rpi-2b1"] }
+lib-boards = { path = "../../lib/boards", features = ["rpi-2b1"] }
 
 [profile.dev]
 panic = "abort"

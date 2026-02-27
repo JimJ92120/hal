@@ -1,6 +1,4 @@
-use hal_lib::{
-    boards::arduino_uno::UART
-};
+use lib_boards::arduino_uno::UART;
 
 use crate::helpers;
 

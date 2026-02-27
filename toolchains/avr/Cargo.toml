@@ -1,10 +1,10 @@
 [package]
-name = "hal-toolchains-avr"
+name = "toolchains-avr"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-hal-lib = { path = "../../lib", features = ["arduino-uno"] }
+lib-boards = { path = "../../lib/boards", features = ["arduino-uno"] }
 
 [profile.dev]
 panic = "abort"

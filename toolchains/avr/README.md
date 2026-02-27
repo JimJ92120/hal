@@ -1,4 +1,4 @@
-# hal-toolchains-avr
+# toolchains-avr
 
 Toolchain boilerplate for `avr` with a basic examples.
 

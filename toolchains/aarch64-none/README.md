@@ -1,4 +1,4 @@
-# hal-toolchains-aarch64-none
+# toolchains-aarch64-none
 
 Toolchain boilerplate for `aarch64-none` (bare-metal) with a basic LED blink example to **GPIO 27**.
 

@@ -1,9 +1,7 @@
 #![no_std]
 #![no_main]
 
-use hal_lib::{
-    boards::rpi::{ Pin, GPIO }
-};
+use lib_boards::rpi::{ Pin, GPIO };
 
 mod panic;
 mod boot;

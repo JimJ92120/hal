@@ -3,12 +3,19 @@
 version = 4
 
 [[package]]
-name = "hal-lib"
+name = "lib-boards"
+version = "0.1.0"
+dependencies = [
+ "lib-registers",
+]
+
+[[package]]
+name = "lib-registers"
 version = "0.1.0"
 
 [[package]]
-name = "hal-toolchains-avr"
+name = "toolchains-avr"
 version = "0.1.0"
 dependencies = [
- "hal-lib",
+ "lib-boards",
 ]

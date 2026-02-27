@@ -1,4 +1,4 @@
-# hal-toolchains-arm-none
+# toolchains-arm-none
 
 Toolchain boilerplate for `arm-none` (bare-metal) with a basic LED blink example to **GPIO 27**.
 
