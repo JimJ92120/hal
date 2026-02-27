@@ -1,6 +1,10 @@
 use format_no_std::show;
 
-use lib_boards::arduino_uno::{ GPIO, Pin, Analog, UART };
+use lib_boards::arduino_uno::{
+    Pin,
+    Analog, AnalogSettings, AnalogMode, AnalogPrescaler,
+    UART
+};
 
 use crate::helpers;
 
@@ -11,15 +15,22 @@ pub fn run() {
     const ENABLE_TRANSMISSION: bool = true;
     const ENABLE_RECEPTION: bool = true;
     // GPIO 14
-    const PIN: Pin = Pin::Fourteen;
+    const PIN: Pin = Pin::Nineteen;
+    const SETTINGS: AnalogSettings = AnalogSettings {
+        mode: AnalogMode::AVcc,
+        prescaler: AnalogPrescaler::HundredTwentyEight,
+    };
     
-    GPIO::set_input(PIN);
     UART::init(BAUD_RATE, FREQUENCY, ENABLE_TRANSMISSION, ENABLE_RECEPTION);
-    Analog::init(PIN);
+    Analog::init();
 
     let mut buffer: [u8; 64] = [0; 64];
 
     loop {
+        Analog::start_conversion(PIN, SETTINGS);
+        // required for voltage to settle
+        helpers::delay(100);
+
         UART::send(show(
             &mut buffer, format_args!("10-bit: {}\n", Analog::read())
         ).unwrap());

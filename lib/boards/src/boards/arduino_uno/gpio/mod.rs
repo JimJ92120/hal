@@ -15,7 +15,7 @@ mod analog;
 pub use pin::Pin;
 pub use digital::Digital;
 pub use pwm::PWM;
-pub use analog::Analog;
+pub use analog::{ Analog, AnalogSettings, AnalogMode, AnalogPrescaler };
 
 #[derive(Debug)]
 pub struct GPIO;
@@ -75,6 +75,8 @@ impl GPIO {
             Pin::Seventeen  => DDRCBitField::AC3 as u8,
             Pin::Eighteen   => DDRCBitField::AC4 as u8,
             Pin::Nineteen   => DDRCBitField::AC5 as u8,
+            // Pin::Twenty     => AC6 as u8,
+            // Pin::TwentyOne  => AC7 as u8,
         }
     }
 }
