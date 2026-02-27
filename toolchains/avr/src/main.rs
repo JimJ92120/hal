@@ -16,4 +16,5 @@ pub extern "C" fn main() {
     // examples::button_toggle::run();
     // examples::uart_send::run();
     // examples::uart_read::run();
+    // examples::rgb_led::run();
 }
