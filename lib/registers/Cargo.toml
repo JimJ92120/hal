@@ -1,0 +1,14 @@
+[package]
+name = "lib-registers"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+atmega328p = []
+
+bcm2835 = []
+bcm2836 = []
+bcm2837 = []
+rp3a0 = []
+bcm2837b0 = []
+bcm2711 = []

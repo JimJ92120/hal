@@ -1,0 +1,46 @@
+[package]
+name = "lib-boards"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+lib-registers = { path = "../registers", features = [
+  "atmega328p",
+  "bcm2835",
+  "bcm2836",
+  "bcm2837",
+  "rp3a0",
+  "bcm2837b0",
+  "bcm2711",
+] }
+
+[features]
+arduino-uno = ["lib-registers/atmega328p"]
+
+rpi-1a = ["lib-registers/bcm2835"]
+rpi-1ap = ["lib-registers/bcm2835"]
+rpi-1b = ["lib-registers/bcm2835"]
+rpi-1bp = ["lib-registers/bcm2835"]
+rpi-cm1 = ["lib-registers/bcm2835"]
+rpi-0 = ["lib-registers/bcm2835"]
+rpi-0w = ["lib-registers/bcm2835"]
+
+rpi-2b1 = ["lib-registers/bcm2836"]
+
+rpi-2b2 = ["lib-registers/bcm2837"]
+rpi-2b3 = ["lib-registers/bcm2837"]
+rpi-3b1 = ["lib-registers/bcm2837"]
+rpi-cm3 = ["lib-registers/bcm2837"]
+
+rpi-02 = ["lib-registers/rp3a0"]
+rpi-02w = ["lib-registers/rp3a0"]
+
+rpi-3b2 = ["lib-registers/bcm2837b0"]
+rpi-3ap = ["lib-registers/bcm2837b0"]
+rpi-3bp = ["lib-registers/bcm2837b0"]
+rpi-cm3p = ["lib-registers/bcm2837b0"]
+
+rpi-4b = ["lib-registers/bcm2711"]
+rpi-400 = ["lib-registers/bcm2711"]
+rpi-cm4 = ["lib-registers/bcm2711"]
+rpi-cm4s = ["lib-registers/bcm2711"]

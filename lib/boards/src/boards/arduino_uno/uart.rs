@@ -1,6 +1,6 @@
-use crate::{
+use lib_registers::{
     globals::{ Register },
-    registers::atmega328p::{
+    atmega328p::{
         UBRR0L,
         UBRR0H,
         UCSR0A, UCSR0ABitField,

@@ -1,6 +1,6 @@
-use crate::{
+use lib_registers::{
     globals::{ Register },
-    registers::bcm::{
+    bcm::{
         GPFSEL0, GPFSEL0BitField,
         GPFSEL1, GPFSEL1BitField,
         GPFSEL2, GPFSEL2BitField,

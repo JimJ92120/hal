@@ -1,6 +1,6 @@
-# bcm
+# rpi
 
-See [`lib/src/registers/bcm/README.md`](../../registers/bcm/README.md) for additional details on SoC targetted.
+See [`lib/registers/src/registers/bcm/README.md`](../../../../registers/src/registers/bcm/README.md) for additional details on SoC targetted.
 
 ---
 

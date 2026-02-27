@@ -1,5 +1,13 @@
+#![no_std]
+#![no_main]
+
+#![allow(dead_code)]
+#![allow(unused_imports)]
+
+mod boards;
+
 #[cfg(feature = "arduino-uno")]
-pub mod arduino_uno;
+pub use boards::arduino_uno;
 
 #[cfg(any(
     feature = "rpi-1a",
@@ -25,4 +33,4 @@ pub mod arduino_uno;
     feature = "rpi-cm4",
     feature = "rpi-cm4s",
 ))]
-pub mod rpi;
+pub use boards::rpi;

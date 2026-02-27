@@ -4,20 +4,36 @@ Some utilities to map and interact with registers for various chips and boards i
 
 ---
 
-# features
+# lib
 
-Following items can be enabled as `[features]` defined in `Cargo.toml`.  
-See [`lib/Cargo.toml`](lib/Cargo.toml) for all defined features and dependencies tree.
+Different utilities are available, based on use case and abstraction level needed.
+Each utility has its own crate (see `lib/` directory) with various `[features]` defined.
+
+The following crates are available:
 
 ### registers
 
-- `atmega328p`: all registers are mapped
-- `bcm*`: `GPFSEL`, `GPSET`, `GPCLR` only (see [`lib/src/registers/bcm/README.md`](lib/src/registers/bcm/README.md))
+Map processors, chips registers addresses and their bit fields.
+
+See [`lib/registers/README.md`](lib/registers/README.md).
+
+```toml
+# enable in Cargo.toml
+[dependencies]
+lib-registers = { path = "/path/to/lib/registers", features = [] }
+```
 
 ### boards
 
-- `arduino-uno`: minimal digital GPIO to set input / output, set output high / low
-- `rpi-*`: minimal digital GPIO to set input / output, set output high / low (see [`lib/src/boards/rpi/README.md`](lib/src/boards/rpi/README.md))
+Abstract `lib/registers` for specific boards (e.g Arduino, Raspberry Pi).
+
+See [`lib/boards/README.md`](lib/boards/README.md).
+
+```toml
+# enable in Cargo.toml
+[dependencies]
+lib-registers = { path = "/path/to/lib/boards", features = [] }
+```
 
 ---
 

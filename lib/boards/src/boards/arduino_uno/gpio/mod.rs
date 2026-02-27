@@ -1,6 +1,6 @@
-use crate::{
+use lib_registers::{
     globals::{ Register },
-    registers::atmega328p::{
+    atmega328p::{
         DDRB, DDRBBitField, PORTB, PORTBBitField, PINB, PINBBitField,
         DDRC, DDRCBitField, PORTC, PORTCBitField, PINC, PINCBitField,
         DDRD, DDRDBitField, PORTD, PORTDBitField, PIND, PINDBitField
