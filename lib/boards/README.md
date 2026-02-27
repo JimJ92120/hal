@@ -12,7 +12,9 @@ See [`Cargo.toml`](Cargo.toml) `[features]` for all boards available.
 
 Following modules are implemented:
 
-- `gpio`: minimal digital GPIO to set input / output, set output high / low
+- `gpio`:
+  - minimal digital GPIO to set input / output, set output high / low
+  - minimal PWM output with timer
 - `uart`: read and send via UART
 
 ```toml
