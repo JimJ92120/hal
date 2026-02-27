@@ -3,7 +3,7 @@ use format_no_std::show;
 use lib_boards::arduino_uno::{
     Pin,
     Analog, AnalogSettings, AnalogMode, AnalogPrescaler,
-    UART, UARTSettings, UARTCharSize, UARTStopBit, UARTSyncMode,
+    UART, UARTSettings, UARTCharSize, UARTStopBit, UARTSyncMode, UARTParityMode,
 };
 
 use crate::helpers;
@@ -29,6 +29,7 @@ pub fn run() {
         char_size: UARTCharSize::Eight,
         stop_bit: UARTStopBit::One,
         sync_mode: UARTSyncMode::Async,
+        parity_mode: UARTParityMode::Disabled,
     });
     Analog::init();
 

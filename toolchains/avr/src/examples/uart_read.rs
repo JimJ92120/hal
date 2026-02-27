@@ -1,7 +1,7 @@
 use format_no_std::show;
 
 use lib_boards::arduino_uno::{
-    UART, UARTSettings, UARTCharSize, UARTStopBit, UARTSyncMode,
+    UART, UARTSettings, UARTCharSize, UARTStopBit, UARTSyncMode, UARTParityMode,
 };
 
 pub fn run() {
@@ -15,6 +15,7 @@ pub fn run() {
         char_size: UARTCharSize::Eight,
         stop_bit: UARTStopBit::One,
         sync_mode: UARTSyncMode::Async,
+        parity_mode: UARTParityMode::Disabled,
     });
 
     let mut buffer: [u8; 64] = [0; 64];

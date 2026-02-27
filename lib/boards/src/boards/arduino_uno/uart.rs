@@ -33,6 +33,13 @@ pub enum UARTSyncMode {
 }
 
 #[derive(Debug)]
+pub enum UARTParityMode {
+    Disabled,
+    Even,
+    Odd,
+}
+
+#[derive(Debug)]
 pub struct UARTSettings {
     pub baud_rate: u32,
     pub frequency: u32,
@@ -41,6 +48,7 @@ pub struct UARTSettings {
     pub char_size: UARTCharSize,
     pub stop_bit: UARTStopBit,
     pub sync_mode: UARTSyncMode,
+    pub parity_mode: UARTParityMode,
 }
 
 #[derive(Debug)]
@@ -56,12 +64,14 @@ impl UART {
             char_size,
             stop_bit,
             sync_mode,
+            parity_mode,
         } = settings;
 
         Self::set_baud_rate(baud_rate, frequency);
         Self::set_char_size(char_size);
         Self::set_stop_bit(stop_bit);
         Self::set_sync_mode(sync_mode);
+        Self::set_parity_mode(parity_mode);
 
         if enable_transmission {
             UCSR0B::or(1 << UCSR0BBitField::TXEN0 as u8);
@@ -129,6 +139,17 @@ impl UART {
                 UCSR0C::or(1 << UCSR0CBitField::UMSEL00 as u8);
                 UCSR0C::or(1 << UCSR0CBitField::UMSEL01 as u8);
             }
-        }
+        };
+    }
+
+    fn set_parity_mode(mode: UARTParityMode) {
+        match mode {
+            UARTParityMode::Disabled => (),
+            UARTParityMode::Even => UCSR0C::or(1 << UCSR0CBitField::UPM00 as u8),
+            UARTParityMode::Odd => {
+                UCSR0C::or(1 << UCSR0CBitField::UPM00 as u8);
+                UCSR0C::or(1 << UCSR0CBitField::UPM01 as u8);
+            },
+        };
     }
 }
