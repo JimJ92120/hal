@@ -20,11 +20,9 @@ pub fn run() {
     let mut buffer: [u8; 64] = [0; 64];
 
     loop {
-        let message = show(
+        UART::send(show(
             &mut buffer, format_args!("10-bit: {}\n", Analog::read())
-        ).unwrap();
-
-        UART::send(message);
+        ).unwrap());
 
         buffer = [0; 64];
 

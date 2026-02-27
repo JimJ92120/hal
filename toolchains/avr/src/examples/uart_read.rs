@@ -1,3 +1,5 @@
+use format_no_std::show;
+
 use lib_boards::arduino_uno::UART;
 
 pub fn run() {
@@ -9,11 +11,13 @@ pub fn run() {
     
     UART::init(BAUD_RATE, FREQUENCY, ENABLE_TRANSMISSION, ENABLE_RECEPTION);
 
+    let mut buffer: [u8; 64] = [0; 64];
+
     loop {
         if let Some(byte) = UART::read() {
-            UART::send("received: ");
-            UART::send(core::str::from_utf8(&[byte]).unwrap());
-            UART::send("\n");
+            UART::send(show(
+                &mut buffer, format_args!("received: {}\n", byte)
+            ).unwrap());
         }
     }
 }
