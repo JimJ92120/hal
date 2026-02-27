@@ -1,4 +1,4 @@
-use lib_boards::arduino_uno::{ Pin, GPIO };
+use lib_boards::arduino_uno::{ Pin, GPIO, Digital };
 
 pub fn run() {
     // GPIO 13 / LED_BUILTIN
@@ -10,10 +10,10 @@ pub fn run() {
     GPIO::set_input(BUTTON);
 
     loop {
-        if GPIO::read_state(BUTTON) {
-            GPIO::set_high(PIN);
+        if Digital::read_state(BUTTON) {
+            Digital::set_high(PIN);
         } else {
-            GPIO::set_low(PIN);
+            Digital::set_low(PIN);
         }
     }
 }

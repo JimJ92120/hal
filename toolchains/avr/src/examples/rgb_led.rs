@@ -1,4 +1,4 @@
-use lib_boards::arduino_uno::{ Pin, GPIO };
+use lib_boards::arduino_uno::{ Pin, GPIO, PWM };
 
 use crate::helpers;
 
@@ -15,17 +15,17 @@ pub fn run() {
     GPIO::set_output(LED_GREEN);
     GPIO::set_output(LED_BLUE);
 
-    GPIO::init_pwm_timer(LED_RED);
-    GPIO::init_pwm_timer(LED_GREEN);
-    GPIO::init_pwm_timer(LED_BLUE);
+    PWM::init_pwm_timer(LED_RED);
+    PWM::init_pwm_timer(LED_GREEN);
+    PWM::init_pwm_timer(LED_BLUE);
 
     let mut cycle: u8 = 0;
     let mut increment: bool = true;
 
     loop {
-        GPIO::set_pwm_cycle(LED_RED, cycle);
-        GPIO::set_pwm_cycle(LED_GREEN, 255 - cycle);
-        GPIO::set_pwm_cycle(LED_BLUE, cycle);
+        PWM::set_pwm_cycle(LED_RED, cycle);
+        PWM::set_pwm_cycle(LED_GREEN, 255 - cycle);
+        PWM::set_pwm_cycle(LED_BLUE, cycle);
 
         if increment {
             cycle += 5;

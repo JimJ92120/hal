@@ -1,4 +1,4 @@
-use lib_boards::arduino_uno::{ Pin, GPIO };
+use lib_boards::arduino_uno::{ Pin, GPIO, Digital };
 
 use crate::helpers;
 
@@ -10,10 +10,10 @@ pub fn run() {
     GPIO::set_output(PIN);
 
     loop {
-        GPIO::set_high(PIN);
+        Digital::set_high(PIN);
         helpers::delay(DELAY_DURATION);
 
-        GPIO::set_low(PIN);
+        Digital::set_low(PIN);
         helpers::delay(DELAY_DURATION);
     }
 }
