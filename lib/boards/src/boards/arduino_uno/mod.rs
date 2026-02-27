@@ -6,5 +6,7 @@ pub use gpio::{
     Pin, GPIO, Digital, PWM,
     Analog, AnalogSettings, AnalogMode, AnalogPrescaler
 };
-pub use uart::UART;
+pub use uart::{
+    UART, UARTSettings, UARTCharSize, UARTStopBit, UARTSyncMode,
+};
 pub use timer::{ Timer, Timer0, Timer1, Timer2 };

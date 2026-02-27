@@ -9,34 +9,71 @@ use lib_registers::{
         UDR0,
     }
 };
+
+#[derive(Debug)]
+pub enum UARTCharSize {
+    Five,
+    Six,
+    Seven,
+    Eight,
+    Nine,
+}
+
+#[derive(Debug)]
+pub enum UARTStopBit {
+    One,
+    Two,
+}
+
+#[derive(Debug)]
+pub enum UARTSyncMode {
+    Async,
+    Sync,
+    SPI,
+}
+
+#[derive(Debug)]
+pub struct UARTSettings {
+    pub baud_rate: u32,
+    pub frequency: u32,
+    pub enable_reception: bool,
+    pub enable_transmission: bool,
+    pub char_size: UARTCharSize,
+    pub stop_bit: UARTStopBit,
+    pub sync_mode: UARTSyncMode,
+}
+
+#[derive(Debug)]
 pub struct UART;
 
 impl UART {
-    pub fn init(baud_rate: u32, frequency: u32, enable_transmission: bool, enable_reception: bool) {
-        // set baud rate
-        UBRR0H::set(0);
-        UBRR0L::set(Self::calculate_baud_rate_from_frequency(frequency, baud_rate));
+    pub fn init(settings: UARTSettings) {
+        let UARTSettings {
+            frequency,
+            baud_rate,
+            enable_reception,
+            enable_transmission,
+            char_size,
+            stop_bit,
+            sync_mode,
+        } = settings;
 
-        // set data frame format to 8 bits + 1 stop bit
-        // UCSR0C::set_bit_mask(UCSR0CBitField::UCSZ00 as u8);
-        UCSR0C::or(1 << UCSR0CBitField::UCSZ00 as u8);
-        // UCSR0C::set_bit_mask(UCSR0CBitField::UCSZ01 as u8);
-        UCSR0C::or(1 << UCSR0CBitField::UCSZ01 as u8);
+        Self::set_baud_rate(baud_rate, frequency);
+        Self::set_char_size(char_size);
+        Self::set_stop_bit(stop_bit);
+        Self::set_sync_mode(sync_mode);
 
         if enable_transmission {
-            // UCSR0B::set_bit_mask(UCSR0BBitField::TXEN0 as u8);
             UCSR0B::or(1 << UCSR0BBitField::TXEN0 as u8);
         }
 
         if enable_reception {
-            // UCSR0B::set_bit_mask(UCSR0BBitField::RXEN0 as u8);
             UCSR0B::or(1 << UCSR0BBitField::RXEN0 as u8);
         }
     }
 
     pub fn send(content: &str) {
         for byte in content.as_bytes() {
-            // while !(UCSR0A::is_bit_mask_set(UCSR0ABitField::UDRE0 as u8)) {}
             while !(0 != UCSR0A::get() & (1 << UCSR0ABitField::UDRE0 as u8)) {}
             
             UDR0::set(*byte);
@@ -45,7 +82,6 @@ impl UART {
     }
 
     pub fn read() -> Option<u8> {
-        // if UCSR0A::is_bit_mask_set(UCSR0ABitField::RXC0 as u8) {
         if 0 != UCSR0A::get() & (1 << UCSR0ABitField::RXC0 as u8) {
             return Some(UDR0::get());
         }
@@ -53,7 +89,46 @@ impl UART {
         None
     }
 
-    fn calculate_baud_rate_from_frequency(frequency: u32, baud_rate: u32) -> u8 {
-        ((frequency / (frequency / 1_000_000) / baud_rate) - 1) as u8
+    fn set_baud_rate(baud_rate: u32, frequency: u32) {
+        let baud_rate = ((frequency / (frequency / 1_000_000) / baud_rate) - 1) as u8;
+
+        UBRR0H::set(0);
+        UBRR0L::set(baud_rate);
+    }
+
+    // only 8-bit supported in `UART::send()`
+    fn set_char_size(mode: UARTCharSize) {
+        match mode {
+            UARTCharSize::Five => (),
+            UARTCharSize::Six => UCSR0C::or(1 << UCSR0CBitField::UCSZ00 as u8),
+            UARTCharSize::Seven => UCSR0C::or(1 << UCSR0CBitField::UCSZ01 as u8),
+            UARTCharSize::Eight => {
+                UCSR0C::or(1 << UCSR0CBitField::UCSZ00 as u8);
+                UCSR0C::or(1 << UCSR0CBitField::UCSZ01 as u8);
+            },
+            UARTCharSize::Nine => {
+                UCSR0C::or(1 << UCSR0CBitField::UCSZ00 as u8);
+                UCSR0C::or(1 << UCSR0CBitField::UCSZ01 as u8);
+                UCSR0B::or(1 << UCSR0BBitField::UCSZ02 as u8);
+            },
+        };
+    }
+
+    fn set_stop_bit(stop_bit: UARTStopBit) {
+        match stop_bit {
+            UARTStopBit::One => (),
+            UARTStopBit::Two => UCSR0C::or(1 << UCSR0CBitField:: USBS0 as u8),
+        };
+    }
+
+    fn set_sync_mode(mode: UARTSyncMode) {
+        match mode {
+            UARTSyncMode::Async => (),
+            UARTSyncMode::Sync => UCSR0C::or(1 << UCSR0CBitField::UMSEL00 as u8),
+            UARTSyncMode::SPI => {
+                UCSR0C::or(1 << UCSR0CBitField::UMSEL00 as u8);
+                UCSR0C::or(1 << UCSR0CBitField::UMSEL01 as u8);
+            }
+        }
     }
 }

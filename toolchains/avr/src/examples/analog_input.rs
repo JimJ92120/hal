@@ -3,7 +3,7 @@ use format_no_std::show;
 use lib_boards::arduino_uno::{
     Pin,
     Analog, AnalogSettings, AnalogMode, AnalogPrescaler,
-    UART
+    UART, UARTSettings, UARTCharSize, UARTStopBit, UARTSyncMode,
 };
 
 use crate::helpers;
@@ -21,7 +21,15 @@ pub fn run() {
         prescaler: AnalogPrescaler::HundredTwentyEight,
     };
     
-    UART::init(BAUD_RATE, FREQUENCY, ENABLE_TRANSMISSION, ENABLE_RECEPTION);
+    UART::init(UARTSettings {
+        baud_rate: 57_600,
+        frequency: 16_000_000,
+        enable_reception: false,
+        enable_transmission: true,
+        char_size: UARTCharSize::Eight,
+        stop_bit: UARTStopBit::One,
+        sync_mode: UARTSyncMode::Async,
+    });
     Analog::init();
 
     let mut buffer: [u8; 64] = [0; 64];
