@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+format_no_std = "1.2.0"
 lib-boards = { path = "../../lib/boards", features = ["arduino-uno"] }
 
 [profile.dev]

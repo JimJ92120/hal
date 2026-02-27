@@ -10,10 +10,12 @@ use lib_registers::{
 mod pin;
 mod digital;
 mod pwm;
+mod analog;
 
 pub use pin::Pin;
 pub use digital::Digital;
 pub use pwm::PWM;
+pub use analog::Analog;
 
 #[derive(Debug)]
 pub struct GPIO;
