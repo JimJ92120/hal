@@ -14,7 +14,7 @@ use examples::{ boards, peripherals };
 
 #[unsafe(no_mangle)]
 pub extern "C" fn main() {
-    // src/boards
+    // lib_boards
     // boards::led_blink::run();
     // boards::button_toggle::run();
     // boards::uart_send::run();
@@ -22,6 +22,6 @@ pub extern "C" fn main() {
     // boards::rgb_led::run();
     // boards::analog_input::run();
 
-    // src/peripherals
+    // lib_peripherals
     peripherals::led_blink::run();
 }
