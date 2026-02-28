@@ -9,32 +9,9 @@ use lib_registers::{
 
 use super::Pin;
 
-// see https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=217
-#[derive(Debug)]
-pub enum AnalogMode {
-    NoVref,
-    AVcc,
-    Internal1_1,
-}
+mod settings;
 
-// see https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=219
-#[derive(Debug)]
-pub enum AnalogPrescaler {
-    Default,
-    Two,
-    Four,
-    Eight,
-    Sixteen,
-    ThirtyTwo,
-    SixtyFour,
-    HundredTwentyEight,
-}
-
-#[derive(Debug)]
-pub struct AnalogSettings {
-    pub mode: AnalogMode,
-    pub prescaler: AnalogPrescaler,
-}
+pub use settings::{ AnalogSettings, AnalogMode, AnalogPrescaler };
 
 #[derive(Debug)]
 pub struct Analog;
