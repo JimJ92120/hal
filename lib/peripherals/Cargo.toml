@@ -1,0 +1,12 @@
+[package]
+name = "lib-peripherals"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+lib-boards = { path = "../boards", features = [
+  "arduino-uno",
+] }
+
+[features]
+arduino-uno = ["lib-boards/arduino-uno"]
