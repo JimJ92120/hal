@@ -16,6 +16,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "lib-peripherals"
+version = "0.1.0"
+dependencies = [
+ "lib-boards",
+]
+
+[[package]]
 name = "lib-registers"
 version = "0.1.0"
 
@@ -25,4 +32,5 @@ version = "0.1.0"
 dependencies = [
  "format_no_std",
  "lib-boards",
+ "lib-peripherals",
 ]

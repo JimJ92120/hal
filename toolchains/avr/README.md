@@ -6,13 +6,26 @@ Toolchain boilerplate for `avr` with a basic examples.
 
 # examples
 
-Examples are located in `src/examples` directory.  
-Each example can be loaded in `src/main.rs` with `examples::<example-name>::run()`.
+Examples are located in `src/examples` directory and separated into `boards/*` (using `lib_boards` crate) and `peripherals/*` (using `lib_peripherals` crate).
+
+Each example can be loaded in `src/main.rs`:
+
+```rust
+// load `led_blink` example
+fn main() {
+  // for lib_boards crate
+  examples::boards::led_blink::run()
+  // for lib_peripherals crate
+  examples::peripherals::led_blink::run();
+}
+```
 
 - `led_blink`: toggle a LED (**GPIO 13**) on / off
 - `buttton_toggle`: set a LED (**GPIO 13**) on / off if a button (**GPIO 7**) is pressed
 - `uart_send`: send `hello world` via UART`
 - `uart_read`: receive single byte and send back `received: {byte}` message via UART
+- `rgb_led`: set a RGB LED colors for each value (`0-255`)
+- `analog_input`: read input value from analog pins (AC0-AC5)
 
 ---
 

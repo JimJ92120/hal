@@ -1,6 +1,7 @@
 #![no_std]
 #![no_main]
 #![allow(dead_code)]
+#![allow(unused_imports)]
 
 #![feature(asm_experimental_arch)]
 #[cfg(target_arch = "avr")]
@@ -9,13 +10,18 @@ mod panic;
 mod helpers;
 
 mod examples;
+use examples::{ boards, peripherals };
 
 #[unsafe(no_mangle)]
 pub extern "C" fn main() {
-    examples::led_blink::run();
-    // examples::button_toggle::run();
-    // examples::uart_send::run();
-    // examples::uart_read::run();
-    // examples::rgb_led::run();
-    // examples::analog_input::run();
+    // src/boards
+    // boards::led_blink::run();
+    // boards::button_toggle::run();
+    // boards::uart_send::run();
+    // boards::uart_read::run();
+    // boards::rgb_led::run();
+    // boards::analog_input::run();
+
+    // src/peripherals
+    peripherals::led_blink::run();
 }
