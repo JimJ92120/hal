@@ -10,10 +10,6 @@ use crate::helpers;
 
 pub fn run() {
     const DELAY_DURATION: u32 = 500_000;
-    const FREQUENCY: u32 = 16_000_000;
-    const BAUD_RATE: u32 = 57_600;
-    const ENABLE_TRANSMISSION: bool = true;
-    const ENABLE_RECEPTION: bool = true;
     // GPIO 14
     const PIN: Pin = Pin::Nineteen;
     const SETTINGS: AnalogSettings = AnalogSettings {
