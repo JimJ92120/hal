@@ -21,6 +21,7 @@ pub extern "C" fn main() {
     // boards::uart_read::run();
     // boards::rgb_led::run();
     // boards::analog_input::run();
+    // boards::i2c_lcd::run();
 
     // lib_peripherals
     peripherals::led_blink::run();

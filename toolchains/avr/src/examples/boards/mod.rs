@@ -4,3 +4,4 @@ pub mod uart_send;
 pub mod uart_read;
 pub mod rgb_led;
 pub mod analog_input;
+pub mod i2c_lcd;
