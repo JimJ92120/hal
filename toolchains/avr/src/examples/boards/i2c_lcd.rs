@@ -25,6 +25,11 @@ impl Settings {
     const FUNCTION_SET: u8      = 0b0010_0000;
     const LINES_2: u8           = 0b0000_1000; // 0 = 1 line
     const FONT_5_10: u8         = 0b0000_0100; // 0 = 5x8 font
+
+    const CGRAM_SET: u8         = 0b0100_0000;
+
+    const DDRAM_SET: u8         = 0b1000_0000;
+    const ROW_2: u8             = 0b0100_0000;
 }
 
 fn send(address: u8, data: u8, is_data: bool, delay: u32) {
@@ -46,6 +51,18 @@ fn send_string(address: u8, content: &str, delay: u32) {
     for byte in content.as_bytes() {
         send(address, *byte, true, delay);
     }
+}
+
+// not checking display size
+// set for 16x2 (2 rows / 16 columns)
+fn move_cursor(address: u8, row_index: u8, column_index: u8, delay: u32) {
+    let mut bit_mask: u8 = Settings::DDRAM_SET | column_index;
+
+    if 1 == row_index {
+        bit_mask |= Settings::ROW_2;
+    }
+
+    send(address, bit_mask, false, delay);
 }
 
 pub fn run() {
@@ -106,6 +123,17 @@ pub fn run() {
 
     helpers::delay(1_000_000);
     
+    send_string(
+        I2C_SETTINGS.slave_address,
+        "hello world",
+        500_000,
+    );
+    move_cursor(
+        I2C_SETTINGS.slave_address,
+        1,
+        2,
+        500
+    );
     send_string(
         I2C_SETTINGS.slave_address,
         "hallo welt",
