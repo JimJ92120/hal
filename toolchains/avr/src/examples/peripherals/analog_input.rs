@@ -1,8 +1,11 @@
 use format_no_std::show;
 
-use lib_boards::arduino_uno::{
+use lib_peripherals::arduino_uno::{
     Pin,
-    Analog, AnalogSettings, AnalogMode, AnalogPrescaler,
+    Potentiometer,
+    AnalogSettings, AnalogMode, AnalogPrescaler,
+};
+use lib_boards::arduino_uno::{
     UART, UARTSettings, UARTCharSize, UARTStopBit, UARTSyncMode, UARTParityMode,
 };
 
@@ -10,12 +13,6 @@ use crate::helpers;
 
 pub fn run() {
     const DELAY_DURATION: u32 = 500_000;
-    // GPIO 19
-    const PIN: Pin = Pin::Nineteen;
-    const SETTINGS: AnalogSettings = AnalogSettings {
-        mode: AnalogMode::AVcc,
-        prescaler: AnalogPrescaler::HundredTwentyEight,
-    };
     
     UART::init(UARTSettings {
         baud_rate: 57_600,
@@ -27,15 +24,20 @@ pub fn run() {
         sync_mode: UARTSyncMode::Async,
         parity_mode: UARTParityMode::Disabled,
     });
-    Analog::init();
 
     let mut buffer: [u8; 64] = [0; 64];
 
-    loop {
-        Analog::start_conversion(PIN, SETTINGS);
+    let potentiometer = Potentiometer::new(
+        Pin::Nineteen,
+        AnalogSettings {
+            mode: AnalogMode::AVcc,
+            prescaler: AnalogPrescaler::HundredTwentyEight,
+        }
+    );
 
+    loop {
         UART::send(show(
-            &mut buffer, format_args!("10-bit: {}\n", Analog::read())
+            &mut buffer, format_args!("10-bit: {}\n", potentiometer.value())
         ).unwrap());
 
         helpers::delay(DELAY_DURATION);

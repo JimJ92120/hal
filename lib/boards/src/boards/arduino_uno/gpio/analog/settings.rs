@@ -1,5 +1,5 @@
 // see https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=217
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum AnalogMode {
     NoVref,
     AVcc,
@@ -7,7 +7,7 @@ pub enum AnalogMode {
 }
 
 // see https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=219
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum AnalogPrescaler {
     Default,
     Two,
@@ -19,7 +19,7 @@ pub enum AnalogPrescaler {
     HundredTwentyEight,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct AnalogSettings {
     pub mode: AnalogMode,
     pub prescaler: AnalogPrescaler,

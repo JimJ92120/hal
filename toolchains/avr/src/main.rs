@@ -27,4 +27,5 @@ pub extern "C" fn main() {
     peripherals::led_blink::run();
     // peripherals::rgb_led::run();
     // peripherals::button_toggle::run();
+    // peripherals::analog_input::run();
 }
