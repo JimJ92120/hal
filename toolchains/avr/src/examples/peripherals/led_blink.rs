@@ -4,13 +4,11 @@ use crate::helpers;
 
 pub fn run() {
     const DELAY_DURATION: u32 = 1_000_000;
-    // GPIO 13 / LED_BUILTIN
-    const PIN: Pin = Pin::Thirteen;
     
-    LED::init(PIN);
+    let mut led = LED::new(Pin::Thirteen);
 
     loop {
-        LED::toggle(PIN);
+        led.toggle();
         helpers::delay(DELAY_DURATION);
     }
 }

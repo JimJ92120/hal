@@ -1,30 +1,50 @@
 use lib_boards::arduino_uno::{ GPIO, Digital };
 use super::Pin;
 
-pub struct LED;
+#[derive(Debug, Clone)]
+pub struct LEDState {
+    pub is_on: bool,
+}
+
+#[derive(Debug)]
+pub struct LED {
+    pin: Pin,
+    state: LEDState,
+}
 
 impl LED {
-    pub fn init(pin: Pin) {
+    pub fn new(pin: Pin) -> Self {
         GPIO::set_output(pin);
-    }
 
-    pub fn on(pin: Pin) {
-        Digital::set_high(pin);
-    }
-
-    pub fn off(pin: Pin) {
-        Digital::set_low(pin);
-    }
-
-    pub fn toggle(pin: Pin) {
-        if Self::is_on(pin) {
-            Self::off(pin);
-        } else {
-            Self::on(pin);
+        Self {
+            pin,
+            state: LEDState {
+                is_on: false,
+            }
         }
     }
 
-    pub fn is_on(pin: Pin) -> bool {
-        Digital::read_state(pin)
+    pub fn state(&self) -> LEDState {
+        self.state.clone()
+    }
+
+    pub fn on(&mut self) {
+        Digital::set_high(self.pin);
+
+        self.state.is_on = true;
+    }
+
+    pub fn off(&mut self) {
+        Digital::set_low(self.pin);
+
+        self.state.is_on = false;
+    }
+
+    pub fn toggle(&mut self) {
+        if self.state.is_on {
+            self.off();
+        } else {
+            self.on();
+        }
     }
 }
