@@ -25,4 +25,5 @@ pub extern "C" fn main() {
 
     // lib_peripherals
     peripherals::led_blink::run();
+    // peripherals::rgb_led::run();
 }
