@@ -23,7 +23,7 @@ impl PWM {
             Pin::Six => Timer0::set_a(value),
             Pin::Nine => Timer1::set_a(value as u16),
             Pin::Ten => Timer1::set_b(value as u16),
-            Pin::Eleven => Timer2::set_b(value),
+            Pin::Eleven => Timer2::set_a(value),
 
             _ => panic!("Pin doesn't support PWM."),
         };

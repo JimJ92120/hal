@@ -31,13 +31,13 @@ impl Timer<u16> for Timer1 {
 
     // GPIO 9
     fn set_a(value: u16) {
-        OCR1AH::set((value >> 8).try_into().unwrap());
-        OCR1AL::set((value & 0b1111_1111).try_into().unwrap());
+        OCR1AL::set((value >> 8).try_into().unwrap());
+        OCR1AH::set((value & 0b1111_1111).try_into().unwrap());
     }
 
     // GPIO 10
     fn set_b(value: u16) {
-        OCR1BH::set((value >> 8).try_into().unwrap());
-        OCR1BL::set((value & 0b1111_1111).try_into().unwrap());
+        OCR1BL::set((value >> 8).try_into().unwrap());
+        OCR1BH::set((value & 0b1111_1111).try_into().unwrap());
     }
 }
