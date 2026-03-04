@@ -3,6 +3,7 @@
 
 #![allow(dead_code)]
 #![allow(unused_imports)]
+#[allow(non_camel_case_types)]
 
 mod registers;
 
