@@ -1,4 +1,4 @@
-// https://content.arduino.cc/assets/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#page=72
+// https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf#page=91
 use crate::globals::Register;
 use super::MMIO_BASE;
 
