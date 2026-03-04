@@ -1,10 +1,10 @@
 [package]
-name = "toolchains-arm-none"
+name = "bcm2837-rpi3b"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-lib-boards = { path = "../../lib/boards", features = ["rpi-2b1"] }
+lib-boards = { path = "../../lib/boards", features = ["rpi-3b1"] }
 
 [profile.dev]
 panic = "abort"

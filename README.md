@@ -37,24 +37,14 @@ lib-registers = { path = "/path/to/lib/boards", features = [] }
 
 ---
 
-# toolchains
+# examples
 
-Following toolchains are available with a minimal example to consume `hal-lib`.
+Some examples using `lib/boards` and `lib/peripherals` are available in `examples/` directory:
 
-- [`avr`](toolchains/avr/README.md)
-- [`aarch64-none`](toolchains/aarch64-none/README.md)
-- [`arm-none`](toolchains/arm-none/README.md)
+- `atmega328p-arduino-uno`
+- `bcm2837-rpi3b`
 
-```sh
-# build with toolchains
-$TOOLCHAIN=avr
-
-cd toolchains/$TOOLCHAIN
-
-nix-shell
-
-cargo build --release
-```
+See [`nix-rust-embedded`](https://github.com/JimJ92120/nix-rust-embedded) for toolchains and environments.
 
 ---
 

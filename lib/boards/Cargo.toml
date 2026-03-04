@@ -6,12 +6,12 @@ edition = "2024"
 [dependencies]
 lib-registers = { path = "../registers", features = [
   "atmega328p",
-  "bcm2835",
-  "bcm2836",
+  # "bcm2835",
+  # "bcm2836",
   "bcm2837",
-  "rp3a0",
-  "bcm2837b0",
-  "bcm2711",
+  # "rp3a0",
+  # "bcm2837b0",
+  # "bcm2711",
 ] }
 
 [features]
