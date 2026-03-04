@@ -13,36 +13,36 @@ impl Register<u32> for GPFSEL1 {
 #[derive(Debug)]
 #[repr(u32)]
 pub enum GPFSEL1BitField {
-    FSEL0 = 0,
-    // 1 (FSEL0)
-    // 2 (FSEL0)
-    FSEL1 = 3,
-    // 4 (FSEL1)
-    // 5 (FSEL1)
-    FSEL2 = 6,
-    // 7 (FSEL2)
-    // 8 (FSEL2)
-    FSEL3 = 9,
-    // 10 (FSEL3)
-    // 11 (FSEL3)
-    FSEL4 = 12,
-    // 13 (FSEL4)
-    // 14 (FSEL4)
-    FSEL5 = 15,
-    // 16 (FSEL5)
-    // 17 (FSEL5)
-    FSEL6 = 18,
-    // 19 (FSEL6)
-    // 20 (FSEL7)
-    FSEL7 = 21,
-    // 22 (FSEL7)
-    // 23 (FSEL7)
-    FSEL8 = 24,
-    // 25 (FSEL8)
-    // 26 (FSEL8)
-    FSEL9 = 27,
-    // 28 (FSEL9)
-    // 29 (FSEL9)
+    FSEL10 = 0,
+    // 1 (FSEL10)
+    // 2 (FSEL10)
+    FSEL11 = 3,
+    // 4 (FSEL11)
+    // 5 (FSEL11)
+    FSEL12 = 6,
+    // 7 (FSEL12)
+    // 8 (FSEL12)
+    FSEL13 = 9,
+    // 10 (FSEL13)
+    // 11 (FSEL13)
+    FSEL14 = 12,
+    // 13 (FSEL14)
+    // 14 (FSEL14)
+    FSEL15 = 15,
+    // 16 (FSEL15)
+    // 17 (FSEL15)
+    FSEL16 = 18,
+    // 19 (FSEL16)
+    // 20 (FSEL17)
+    FSEL17 = 21,
+    // 22 (FSEL17)
+    // 23 (FSEL17)
+    FSEL18 = 24,
+    // 25 (FSEL18)
+    // 26 (FSEL18)
+    FSEL19 = 27,
+    // 28 (FSEL19)
+    // 29 (FSEL19)
     // 30
     // 31
 }
