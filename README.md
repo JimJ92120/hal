@@ -39,10 +39,8 @@ lib-registers = { path = "/path/to/lib/boards", features = [] }
 
 # examples
 
-Some examples using `lib/boards` and `lib/peripherals` are available in `examples/` directory:
-
-- `atmega328p-arduino-uno`
-- `bcm2837-rpi3b`
+Some examples using `lib/boards` and `lib/peripherals` are available in `examples/` directory.
+See [`examples/README.md`](examples/README.md) for further details.
 
 See [`nix-rust-embedded`](https://github.com/JimJ92120/nix-rust-embedded) for toolchains and environments.
 
